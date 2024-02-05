@@ -8,4 +8,4 @@ vector.o:	Vector.cpp Vector.h
 main.o:		main.cpp Vector.h
 	$(CC) $(CFLAGS) -c main.cpp
 clean:
-	$(RM) Vector *.o *~
+	$(RM) vector *.o *~
