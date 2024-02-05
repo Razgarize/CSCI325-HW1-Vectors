@@ -1,6 +1,9 @@
+#ifndef VECTOR_H
+#define VECTOR_H
+
 namespace NonSTD
 {
-  class Vectors
+  class Vector
   {
   private:
     int *vec_ptr; //Points to the vector's dynamic array.
@@ -92,3 +95,5 @@ namespace NonSTD
     
   };
 }
+
+#endif

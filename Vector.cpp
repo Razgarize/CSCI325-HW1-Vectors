@@ -3,8 +3,20 @@
 
 using namespace NonSTD;
 
-Vector()
+Vector::Vector()
 {
-  int vec_size;
-  int *vec_ptr = new int[vec_size];
+  int vec_size = 0;
+  int vec_capcity = 0;
+  int *vec_ptr = NULL;
 }
+
+Vector::~Vector()
+{
+  delete vec_ptr;
+}
+
+//Vector& operator=(const Vector &other)
+//{
+//
+  //}
+
