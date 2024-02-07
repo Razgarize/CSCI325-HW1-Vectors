@@ -5,6 +5,7 @@ using namespace NonSTD;
 
 Vector::Vector(const Vector &other)
 {
+  //copies an object.
   vec_size = other.vec_size;
   vec_capacity = other.vec_capacity;
   vec_ptr = new int[vec_capacity];
@@ -44,8 +45,11 @@ int Vector::capacity()
 
 //Vector& Vector::operator=(const Vector &other)
 //{
-//DEEP COPY
-//}
+  //DEEP COPY
+  
+  
+  
+  //}
 void Vector::reserve(int n)
 {
   //TODO: Requests that the vector capacity be resized at least enough to contain n elements.
@@ -79,4 +83,17 @@ void Vector::push_back(int element)
       reserve(vec_capacity+1);
     }
   vec_ptr[vec_size + 1] = element;
+  vec_size += 1;
 }
+
+
+
+
+void Vector::PrintVector()
+{
+  for(int i = 0; i <= vec_size; i++)
+    {
+      std::cout << vec_ptr[i] << ' '; 
+    }
+}
+    

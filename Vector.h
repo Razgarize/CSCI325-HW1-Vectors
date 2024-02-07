@@ -91,8 +91,7 @@ namespace NonSTD
     /* Description:
      *    Returns a reference to the element at position index.
      */
-
-    
+    void PrintVector();
   };
 }
 
