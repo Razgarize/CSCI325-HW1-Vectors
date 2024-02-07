@@ -70,6 +70,7 @@ namespace NonSTD
 
 
     void reserve(int n);
+    void reserve();
     /* Description:
      *    Requests that the vector capacity be resized at least enough to contain n elements.
      *

@@ -19,7 +19,7 @@ Vector::Vector()
 {
   vec_size = 0;
   vec_capacity = 0;
-  vec_ptr = new int[vec_capacity];
+  vec_ptr = NULL;
 }
 
 Vector::~Vector()
@@ -43,17 +43,30 @@ int Vector::capacity()
 
 
 
-//Vector& Vector::operator=(const Vector &other)
-//{
+Vector& Vector::operator=(const Vector &other)
+{
   //DEEP COPY
   
-  
-  
-  //}
+  //Self Guard.
+
+  if(other.vec_size > vec_size)
+    {
+      reserve();
+    }
+  for(int i = 0; i < other.vec_size; i++)
+    {
+      vec_ptr[i] = other.vec_ptr[i];
+    }
+  return *this;
+}
 void Vector::reserve(int n)
 {
   //TODO: Requests that the vector capacity be resized at least enough to contain n elements.
-
+  if(vec_ptr == NULL)
+    {
+      vec_ptr = new int[10];
+      return;
+    }
   if (vec_capacity < n)
     {
       int *temp = new int[n];
@@ -70,6 +83,24 @@ void Vector::reserve(int n)
     }
 }
 
+void Vector::reserve()
+{
+  if(vec_ptr == NULL)
+    {
+      vec_ptr = new int[10];
+      vec_capacity += 10;
+      return;
+    }
+  vec_capacity = vec_capacity * 2;
+  int *temp = new int[vec_capacity];
+  for(int i = 0; i < vec_size; i++)
+    {
+      temp[i] = vec_ptr[i];
+    }
+  delete[] vec_ptr;
+  vec_ptr = temp;
+}
+
 int& Vector::operator[](unsigned int index)
 {
   //Returns a reference to the element at position index.
@@ -80,7 +111,7 @@ void Vector::push_back(int element)
 {
   if(vec_size + 1 >= vec_capacity)
     {
-      reserve(vec_capacity+1);
+      reserve();
     }
   vec_ptr[vec_size + 1] = element;
   vec_size += 1;
@@ -91,9 +122,12 @@ void Vector::push_back(int element)
 
 void Vector::PrintVector()
 {
+  if(vec_ptr == NULL)
+    {
+      reserve();
+    }
   for(int i = 0; i <= vec_size; i++)
     {
       std::cout << vec_ptr[i] << ' '; 
     }
 }
-    

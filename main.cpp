@@ -24,7 +24,7 @@ int main()
 
       if(a == '1')
 	{
-	  cout << object.size() << endl;
+	  cout << "Object Size: " << object.size() << endl;
 	  cout << "Size Test Complete" << endl;
 	}
       else if (a == '2')
@@ -49,10 +49,6 @@ int main()
 	  cout << "Here are the numbers: ";
 	  object.PrintVector();
 	  cout << endl;
-	}
-      else
-	{
-	  cout << "invalid entry." << endl;
 	}
     }
   
