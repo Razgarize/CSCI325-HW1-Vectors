@@ -49,10 +49,10 @@ Vector& Vector::operator=(const Vector &other)
   
   //Self Guard.
 
-  if(other.vec_size > vec_size)
-    {
-      reserve();
-    }
+  delete[] vec_ptr;
+  vec_ptr = new int[other.vec_capacity];
+  vec_size = other.vec_size;
+  vec_capacity = other.vec_capacity;
   for(int i = 0; i < other.vec_size; i++)
     {
       vec_ptr[i] = other.vec_ptr[i];
@@ -113,7 +113,7 @@ void Vector::push_back(int element)
     {
       reserve();
     }
-  vec_ptr[vec_size + 1] = element;
+  vec_ptr[vec_size] = element;
   vec_size += 1;
 }
 
@@ -126,7 +126,7 @@ void Vector::PrintVector()
     {
       reserve();
     }
-  for(int i = 0; i <= vec_size; i++)
+  for(int i = 0; i < vec_size; i++)
     {
       std::cout << vec_ptr[i] << ' '; 
     }
